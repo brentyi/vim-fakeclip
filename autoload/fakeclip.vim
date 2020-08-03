@@ -383,8 +383,8 @@ endfunction
 
 
 function! s:write_clipboard_unknown(text)
-  echoerr 'Yanking into the clipboard is not supported on this platform:'
-  \       s:PLATFORM
+  " If unknown system, give OSC52 a try...
+  call fakeclip_osc52#send(a:text)
 endfunction
 
 
